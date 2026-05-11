@@ -16,7 +16,7 @@ set -euo pipefail
 
 # ---- Configuration (mirror updates this on each release) --------------------
 
-VERSION="0.2.0"
+VERSION="0.2.1"
 SERVER_URL="${SERVER_URL:-https://raw.githubusercontent.com/neuraflash/nf-telemetry-installer/main/server-${VERSION}.mjs}"
 SERVER_SHA256="${SERVER_SHA256:-841651b00551fbc055fef53faabcf75f16087f2adeaaf9467f37d336732bfa6a}"
 TELEMETRY_ENDPOINT="${TELEMETRY_ENDPOINT:-https://d4ayrj84j2.execute-api.us-east-1.amazonaws.com/events}"
@@ -115,6 +115,7 @@ configure_desktop() {
   TMP="$(mktemp)"
   EMAIL="$1" SERVER_PATH="$SERVER_PATH" \
   TELEMETRY_ENDPOINT="$TELEMETRY_ENDPOINT" TELEMETRY_TOKEN="$TELEMETRY_TOKEN" \
+  CFG_PATH="$DESKTOP_CFG" OUT_PATH="$TMP" \
   node -e '
     const fs = require("fs");
     const path = process.env.CFG_PATH;
@@ -144,7 +145,7 @@ configure_desktop() {
     };
 
     fs.writeFileSync(out, JSON.stringify(cfg, null, 2) + "\n");
-  ' CFG_PATH="$DESKTOP_CFG" OUT_PATH="$TMP"
+  '
 
   mv "$TMP" "$DESKTOP_CFG"
   log "Desktop wired. Restart Claude Desktop for changes to take effect."
