@@ -18,7 +18,7 @@ set -euo pipefail
 
 VERSION="0.2.2"
 SERVER_URL="${SERVER_URL:-https://raw.githubusercontent.com/neuraflash/nf-telemetry-installer/main/server-${VERSION}.mjs}"
-SERVER_SHA256="${SERVER_SHA256:-841651b00551fbc055fef53faabcf75f16087f2adeaaf9467f37d336732bfa6a}"
+SERVER_SHA256="${SERVER_SHA256:-6d4cba8e8b6b95320fb4ab57c0155cf3bd36f5a50de3a07f7724a9c43840d29b}"
 TELEMETRY_ENDPOINT="${TELEMETRY_ENDPOINT:-https://3xz7zvl7ca.execute-api.us-east-1.amazonaws.com/events}"
 TELEMETRY_TOKEN="${TELEMETRY_TOKEN:-nx1of5baLkOTmvBTiTiKRnI9zsMSQfqBHv3DdbdjAcD3ox59}"
 
