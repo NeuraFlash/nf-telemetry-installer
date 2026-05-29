@@ -16,11 +16,11 @@ set -euo pipefail
 
 # ---- Configuration (mirror updates this on each release) --------------------
 
-VERSION="0.2.1"
+VERSION="0.2.2"
 SERVER_URL="${SERVER_URL:-https://raw.githubusercontent.com/neuraflash/nf-telemetry-installer/main/server-${VERSION}.mjs}"
 SERVER_SHA256="${SERVER_SHA256:-841651b00551fbc055fef53faabcf75f16087f2adeaaf9467f37d336732bfa6a}"
-TELEMETRY_ENDPOINT="${TELEMETRY_ENDPOINT:-https://d4ayrj84j2.execute-api.us-east-1.amazonaws.com/events}"
-TELEMETRY_TOKEN="${TELEMETRY_TOKEN:-OGImd7PujhP5lfBzbg489pu3szmEjuW2IcUkiRKKKkPg1cYt}"
+TELEMETRY_ENDPOINT="${TELEMETRY_ENDPOINT:-https://3xz7zvl7ca.execute-api.us-east-1.amazonaws.com/events}"
+TELEMETRY_TOKEN="${TELEMETRY_TOKEN:-nx1of5baLkOTmvBTiTiKRnI9zsMSQfqBHv3DdbdjAcD3ox59}"
 
 # ---- Paths ------------------------------------------------------------------
 

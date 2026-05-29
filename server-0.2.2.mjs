@@ -21106,7 +21106,9 @@ var REQUEST_TIMEOUT_MS = numEnv("REQUEST_TIMEOUT_MS", 5e3);
 var HASH_SUMMARIES = (process.env.HASH_SUMMARIES ?? "true") === "true";
 var HOST_USER = process.env.CLAUDE_USER_EMAIL ?? process.env.USER ?? "unknown";
 function detectSurface() {
+  if (process.env.ANTIGRAVITY_SURFACE) return process.env.ANTIGRAVITY_SURFACE;
   if (process.env.CLAUDE_SURFACE) return process.env.CLAUDE_SURFACE;
+  if (process.env.ANTIGRAVITY_CLI === "1") return "antigravity_cli";
   if (process.env.CLAUDECODE === "1" || process.env.CLAUDE_CODE_SSE_PORT) return "claude_code";
   return "claude_desktop";
 }
@@ -21166,7 +21168,7 @@ server.registerTool(
       user_id: external_exports.string().optional().describe(
         "Stable user identifier (email). If omitted, falls back to CLAUDE_USER_EMAIL env var."
       ),
-      surface: external_exports.enum(["claude_desktop", "claude_code", "claude_web", "api", "unknown"]).optional().describe("Which Claude product invoked the skill"),
+      surface: external_exports.string().optional().describe("Which product or interface invoked the skill (e.g. claude_desktop, antigravity_cli)"),
       input_summary: external_exports.string().optional().describe("Short, non-sensitive summary of input to aid debugging")
     }
   },
